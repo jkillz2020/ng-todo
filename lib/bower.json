@@ -3,10 +3,10 @@
   "description": "",
   "main": "index.js",
   "authors": [
-    "Zoe Ames <zoeames@gmail.com>"
+    "Josh Kilgore <kilgore.josh@gmail.com>"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/zoeames/angular-todo",
+  "homepage": "https://github.com/jkillz2020/ng-todo",
   "ignore": [
     "**/.*",
     "node_modules",
