@@ -50,12 +50,26 @@ app.factory('ItemFactory', function($q, $http, FIREBASE_CONFIG){
     })
   }
 
+  var getSingleItem =  function(itemId){
+    return $q((resolve, reject) => {
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/Items/${itemId}.json`)
+      .success(function(getSingleResponse){
+        console.log("success", getSingleResponse)
+        resolve(getSingleResponse);
+      })
+      .error(function(getSingleError){
+        reject(getSingleError);
+      })
+    })
+  }
+
 
 
 
 
   return {getItemList:getItemList,
           postNewItem:postNewItem,
-          deleteItem:deleteItem
+          deleteItem:deleteItem,
+          getSingleItem:getSingleItem
         }
 })
