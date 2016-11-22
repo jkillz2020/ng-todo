@@ -64,12 +64,34 @@ app.factory('ItemFactory', function($q, $http, FIREBASE_CONFIG){
   }
 
 
+var editItem = function(editItem){
+        console.log("factory editResponse", editItem)
+    return $q((resolve, reject)=>{
+      $http.put(`${FIREBASE_CONFIG.databaseURL}/Items/${editItem.id}.json`, 
+        JSON.stringify({
+        assignedTo: editItem.assignedTo,
+        isCompleted: editItem.isCompleted,
+        task: editItem.task
+      })
+    )
+      .success(function(editResponse){
+        resolve(editResponse);
+      })
+      .error(function(editError){
+        reject(editError);
+      })
+    })
+  }
+
+
+
 
 
 
   return {getItemList:getItemList,
           postNewItem:postNewItem,
           deleteItem:deleteItem,
-          getSingleItem:getSingleItem
+          getSingleItem:getSingleItem,
+          editItem:editItem
         }
 })
